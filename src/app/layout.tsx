@@ -2,6 +2,9 @@
 import { Inter } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import './globals.css'
+import Navibar from "../components/ui/navibar";
+import React from 'react';
+
 
 const fontHeading = Inter({
   subsets: ['latin'],
@@ -25,6 +28,7 @@ export default function Layout({ children }) {
           fontBody.variable
         )}
       >
+        <Navibar />
         {children}
       </body>
     </html>
