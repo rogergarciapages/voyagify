@@ -1,4 +1,5 @@
 
+import ConnectButton from "@/components/ConnectButton"
 import Link from "next/link"
 
 export default function Component() {
@@ -15,16 +16,10 @@ export default function Component() {
               Let Voyagify analyze your Spotify playlists and suggest your next dream vacation spot.
 
               </p>
-              <Link
-                href="#"
-                className="inline-flex items-center justify-center h-12 px-8 rounded-md bg-secondary text-secondary-foreground font-medium transition-colors hover:bg-secondary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2"
-                prefetch={false}
-              >
-                Connect with Spotify
-              </Link>
+              <ConnectButton />
             </div>
             <div className="hidden md:block">
-              <img src="/placeholder.svg" alt="Next.js Hero Image" width={600} height={400} className="rounded-lg" />
+              <img src="." alt="Next.js Hero Image" width={600} height={400} className="rounded-lg" />
             </div>
           </div>
         </div>
