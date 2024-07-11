@@ -1,9 +1,12 @@
 
+"use client";
+
 import { Inter } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import './globals.css'
 import Navibar from "../components/ui/navibar";
 import React from 'react';
+import { SessionProvider } from 'next-auth/react';
 
 
 const fontHeading = Inter({
@@ -20,6 +23,7 @@ const fontBody = Inter({
 
 export default function Layout({ children }) {
   return (
+    <SessionProvider>
     <html lang="en">
       <body 
         className={cn(
@@ -32,5 +36,6 @@ export default function Layout({ children }) {
         {children}
       </body>
     </html>
+    </SessionProvider>
   )
 }

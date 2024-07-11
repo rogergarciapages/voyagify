@@ -1,11 +1,15 @@
-// src/components/Navibar.tsx
+"use client"
+
 import React from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react"; // Import useSession
+import { signOut } from "next-auth/react";
 import MountainIcon from "../MountainIcon";
 import MenuIcon from "../MenuIcon";
 
 const Navibar = () => {
   return (
+    
     <header className="w-full bg-[#1db954] text-white">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" passHref>
@@ -20,9 +24,13 @@ const Navibar = () => {
           <NavLink href="/about">About Us</NavLink>
           <NavLink href="/explore">Explore</NavLink>
         </nav>
-        {/* Menu button or additional elements */}
+        <div className="flex gap-4 items-center">
+          {/* Logout Button */}
+          <LogoutButton />
+        </div>
       </div>
     </header>
+
   );
 };
 
@@ -34,6 +42,27 @@ function NavLink({ href, children }) {
       </div>
     </Link>
   );
+}
+
+function LogoutButton() {
+  const { data: session } = useSession(); // Ensure useSession is correctly imported
+
+  const handleLogout = async () => {
+    await signOut({ redirect: false, callbackUrl: "/" }); // Adjust callbackUrl as needed
+  };
+
+  if (session) {
+    return (
+      <button
+        className="text-sm font-medium hover:underline underline-offset-4 cursor-pointer"
+        onClick={handleLogout}
+      >
+        Logout
+      </button>
+    );
+  }
+  
+  return null;
 }
 
 export default Navibar;
